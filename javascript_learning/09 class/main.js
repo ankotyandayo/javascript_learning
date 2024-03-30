@@ -19,20 +19,31 @@
       this.subject = subject;
       this.result = result;
     }
-    getScoreString() {
-      let grade;
-      if (this.result >= 80) {
-        grade = "A";
-      } else {
-        grade = "B";
-      }
 
-      return `${this.subject} ${this.result} ${grade}`;
+    getGrade() {
+      return this.result >= 80 ? "A" : "B";
+    }
+    getScoreString() {
+      return `${this.subject} ${this.result} ${this.getGrade()}`;
     }
   }
-
-  const user1 = new User("Taro", new Score("Math", 70));
-  const user2 = new User("Jiro", new Score("English", 80));
+  // 子クラス subclass << superclass
+  class MathScore extends Score {
+    constructor(result) {
+      super("Math", result);
+    }
+    //　メソッドのオーバーライド
+    getGrade() {
+      return this.result >= 50 ? "A" : "B";
+    }
+  }
+  class EnglishScore extends Score {
+    constructor(result) {
+      super("English", result);
+    }
+  }
+  const user1 = new User("Taro", new MathScore(70));
+  const user2 = new User("Jiro", new EnglishScore(80));
 
   console.log(user1.getUserString());
   console.log(user2.getUserString());
