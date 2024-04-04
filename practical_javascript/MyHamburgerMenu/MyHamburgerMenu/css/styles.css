@@ -69,4 +69,56 @@ main {
   margin-top: 24px;
   opacity: 0;
   transform: translateY(16px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.overlay.show li {
+  opacity: 1;
+  transform: none;
+}
+
+.overlay.show li:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.overlay.show li:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.overlay.show li:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.pc-menu {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .pc-menu {
+    display: block;
+    margin-left: auto;
+  }
+  .pc-menu ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pc-menu a {
+    /* display blockにすることでwidthとかを設定できるようにできる */
+    display: block;
+    width: 80px;
+    line-height: 64px;
+    /* textがある要素に対して行える */
+    text-align: center;
+  }
+
+  .pc-menu a:hover {
+    background-color: #2f2f2f;
+  }
+
+  .sp-menu {
+    display: none;
+  }
 }
