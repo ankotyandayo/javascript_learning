@@ -1,9 +1,11 @@
-.container {
+.carousel {
   width: 80%;
-  height: 220px;
   margin: 16px auto;
-  /* outline: 8px solid red; */
-  /* はみ出している部分を隠す */
+}
+
+.container {
+  width: 100%;
+  height: 220px;
   overflow: hidden;
   position: relative;
 }
@@ -19,25 +21,19 @@ ul {
 
 li {
   height: 100%;
-  /* display flexにすると画像が縮んでしまうから
-  min-widthで幅を保つ */
   min-width: 100%;
 }
 
-/* 幅、高さを枠内100%にする */
 li img {
   width: 100%;
   height: 100%;
-  /* 縦横比を保ったままにできる */
   object-fit: cover;
 }
 
 #prev,
 #next {
   position: absolute;
-  /* 真ん中に設定する 上から50% でもその位置にこのボタンの一番上が来ちゃう */
   top: 50%;
-  /* だから50%上にずらす */
   transform: translateY(-50%);
   border: none;
   background: rgba(0, 0, 0, 0.8);
@@ -47,7 +43,7 @@ li img {
   cursor: pointer;
 }
 
-#prev,
+#prev:hover,
 #next:hover {
   opacity: 0.8;
 }
@@ -58,4 +54,30 @@ li img {
 
 #next {
   right: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+nav {
+  margin-top: 16px;
+  text-align: center;
+}
+
+nav button + button {
+  margin-left: 8px;
+}
+
+nav button {
+  border: none;
+  width: 16px;
+  height: 16px;
+  background: #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+nav .current {
+  background: #999;
 }
